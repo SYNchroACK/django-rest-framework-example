@@ -15,6 +15,40 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+#######################################################
+# ---- Production Mode Configuration Parameters ----- #
+#######################################################
+
+# --- HTTP Strict Transport Security
+# SECURE_HSTS_SECONDS = 3600
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+# --- Header 'x-content-type-options: nosniff'
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# --- Header 'x-xss-protection: 1; mode=block'
+# SECURE_BROWSER_XSS_FILTER = True
+
+# --- SSL-only
+# SECURE_SSL_REDIRECT = True
+
+# --- Cookie Security
+# SESSION_COOKIE_SECURE = True
+
+# --- CSRF Security
+# CSRF_COOKIE_SECURE = True
+
+# --- Frame Security
+# X_FRAME_OPTIONS = 'DENY'
+
+# --- Pre Load List
+# SECURE_HSTS_PRELOAD = True
+
+# --- CORS
+CORS_ORIGIN_ALLOW_ALL = True  # FIXME: change me in production mode
+# CORS_ORIGIN_WHITELIST = (
+#     '<SERVER-IP>',
+# )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -38,6 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +83,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'
