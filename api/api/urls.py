@@ -23,6 +23,9 @@ urlpatterns = [
     path('', include('rest_framework.urls')),
     path('docs/', include_docs_urls(title='API')),
     path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls.base')),
+    path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.jwt')),
 ]
 
 from rest_framework.routers import DefaultRouter
