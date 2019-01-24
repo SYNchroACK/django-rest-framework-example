@@ -32,6 +32,12 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
-# Router URL Paths will be placed here later ...
+from freelearning.views import CourseViewSet
+from freelearning.views import LessonViewSet
+from freelearning.views import ResourceViewSet
+
+router.register('courses', CourseViewSet)
+router.register('lessons', LessonViewSet)
+router.register('resources', ResourceViewSet)
 
 urlpatterns += router.urls
