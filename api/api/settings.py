@@ -59,7 +59,7 @@ SECRET_KEY = 'dmx-^^@50jq@=6ck6ra*4muok6kw17@%yn=(a94lfgg4ca3)9d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # FIXME: change me in production mode
 
 
 # Application definition
