@@ -6,6 +6,8 @@ from rest_framework.authentication import BasicAuthentication
 # from rest_framework.permissions import IsAuthenticated
 from freelearning.permissions import IsOwnerOrReadOnlyPublicPermission
 
+from freelearning.filters import IsOwnerOrPublicFilterBackend
+
 from rest_framework.viewsets import ModelViewSet
 
 from freelearning.serializers import CourseSerializer
@@ -22,6 +24,7 @@ class CourseViewSet(ModelViewSet):
     allowed_methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     authentication_classes = (BasicAuthentication, TokenAuthentication, SessionAuthentication, JSONWebTokenAuthentication)   
     permission_classes = (IsOwnerOrReadOnlyPublicPermission,)
+    filter_backends = (IsOwnerOrPublicFilterBackend,)
 
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
@@ -32,6 +35,7 @@ class LessonViewSet(ModelViewSet):
     allowed_methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     authentication_classes = (BasicAuthentication, TokenAuthentication, SessionAuthentication, JSONWebTokenAuthentication)
     permission_classes = (IsOwnerOrReadOnlyPublicPermission,)
+    filter_backends = (IsOwnerOrPublicFilterBackend,)
 
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
@@ -42,6 +46,7 @@ class ResourceViewSet(ModelViewSet):
     allowed_methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     authentication_classes = (BasicAuthentication, TokenAuthentication, SessionAuthentication, JSONWebTokenAuthentication)
     permission_classes = (IsOwnerOrReadOnlyPublicPermission,)
+    filter_backends = (IsOwnerOrPublicFilterBackend,)
 
     serializer_class = ResourceSerializer
     queryset = Resource.objects.all()
